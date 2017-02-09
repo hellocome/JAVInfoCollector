@@ -1,0 +1,63 @@
+create table T_JAVRECORD (
+   id INT NOT NULL auto_increment,
+   language VARCHAR(2) NOT NULL,
+   avuid VARCHAR(30) NOT NULL ,
+   title VARCHAR(500) default NULL,
+   titleImgName VARCHAR(30) default NULL,
+   releaseDate DATE default "2000-01-01",
+   lengthInMinutes INT default 0,  
+   director VARCHAR(100) default NULL,
+   maker VARCHAR(100) default NULL,
+   label VARCHAR(100) default NULL,
+   userRate INT default 0, 
+   wantit INT default 0,  
+   watchedit INT default 0,  
+   gotit INT default 0,  
+	
+   PRIMARY KEY (id)
+);
+
+create table T_JAVIMAGE (
+   id INT NOT NULL auto_increment,
+   javrecordid INT default 0,
+   imgUrl VARCHAR(255) default NULL,
+   imgName VARCHAR(30) default NULL,
+   content BLOB NOT NULL,
+   PRIMARY KEY (id)
+);
+
+create table T_JAVRECORD_GENRE (
+   javgenreid INT NOT NULL auto_increment,
+   javrecordid INT default 0,
+   PRIMARY KEY (javgenreid,javrecordid)
+);
+
+create table T_JAVGENRE (
+   id INT NOT NULL auto_increment, 
+   genreName VARCHAR(100) NOT NULL,
+   PRIMARY KEY (id)
+);
+
+
+/*
+	private String language;
+	private String avuid;
+	
+	
+	private String title;
+	private String titleImgUrl;
+	
+	private Date releaseDate;
+	private int lengthInMinutes;
+	private String director;
+	private String maker;
+	private String label;
+	private int userRate;
+	private List<String> genre;
+	private List<String> imageUrls;
+	private String cast;
+	
+	private int wantit;
+	private int watchedit;
+	private int gotit;
+*/

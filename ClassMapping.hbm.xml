@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.zhaohaijie.httptask.JAV.Objects.JAVRecord" table="T_JAVRECORD">
+      <meta attribute="class-description">
+         This class contains the JAVRecord detail. 
+      </meta>
+      <id name="id" type="int" column="id">
+         <generator class="native"/>
+      </id>
+      <property name="language" column="language" type="string"/>
+      <property name="avuid" column="avuid" type="int"/>
+      <property name="title" column="title" type="string"/>
+      <property name="titleImgName" column="titleImgName" type="string"/>
+      
+      <property name="releaseDate" column="releaseDate" type="date"/>
+      <property name="lengthInMinutes" column="lengthInMinutes" type="int"/>
+      <property name="director" column="director" type="string"/>
+      <property name="maker" column="maker" type="string"/>
+      <property name="label" column="label" type="string"/>
+      
+      <property name="userRate" column="userRate" type="int"/>
+      <property name="cast" column="cast" type="string"/>
+      <property name="wantit" column="wantit" type="int"/>
+      <property name="watchedit" column="watchedit" type="int"/>
+      <property name="gotit" column="gotit" type="int"/>
+      
+      
+      <set name="images" cascade="all" table="T_JAVIMAGE">
+      	<key column="javrecordid"></key>  
+      	<one-to-many class="com.zhaohaijie.httptask.JAV.Objects.JAVImage"></one-to-many>
+      </set> 
+      
+      <set name="genres" table="T_JAVRECORD_GENRE">  
+		<key column="user_id"></key>  
+		
+		<many-to-many class="com.zhaohaijie.httptask.JAV.Objects.JAVImage" column="role_id"></many-to-many>  
+	</set>  
+   </class>
+   
+    <class name="com.zhaohaijie.httptask.JAV.Objects.JAVImage" table="T_JAVIMAGE">  
+        <id name="id">  
+            <generator class="native"/>  
+        </id>  
+      <property name="javrecordid" column="javrecordid" type="int"/>
+      <property name="imgUrl" column="imgUrl" type="string"/>
+      <property name="imgName" column="imgName" type="string"/>
+      <property name="content" column="content" type="blob"/>
+    </class>  
+      
+    <class name="com.zhaohaijie.httptask.JAV.Objects.JAVGenre" table="T_JAVGENRE">  
+        <id name="id">  
+            <generator class="native"/>  
+        </id>  
+      <property name="genreName" column="genreName" type="string"/>
+    </class>  
+</hibernate-mapping>

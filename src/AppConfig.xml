@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config >
+    <taskmapping>
+        <mapping taskid="1" taskgenerator="com.zhaohaijie.httptask.JAV.JAVTaskGenerator" taskprocessor="com.zhaohaijie.httptask.JAV.JAVHttpTaskResultProcessor"/>
+    </taskmapping>
+</config>
